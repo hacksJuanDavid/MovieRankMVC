@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace MovieRank.Models;
 
 public class Movie
