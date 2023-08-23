@@ -18,13 +18,13 @@ namespace MovieRank.Controllers
         // GET: User/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return PartialView("Details");
         }
 
         // GET: User/Create
         public ActionResult Create()
         {
-            return View();
+            return PartialView("Create");
         }
 
         // POST: User/Create
@@ -40,14 +40,14 @@ namespace MovieRank.Controllers
             }
             catch
             {
-                return View();
+                return PartialView("Create");
             }
         }
 
         // GET: User/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return PartialView("Edit");
         }
 
         // POST: User/Edit/5
@@ -63,14 +63,14 @@ namespace MovieRank.Controllers
             }
             catch
             {
-                return View();
+                return PartialView("Edit");
             }
         }
 
         // GET: User/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return PartialView("Delete");
         }
 
         // POST: User/Delete/5
@@ -86,8 +86,15 @@ namespace MovieRank.Controllers
             }
             catch
             {
-                return View();
+                return PartialView("Delete");
             }
         }
+        
+        // GET: User/Profile/5
+        public ActionResult Profile(int id)
+        {
+            return PartialView("Profile");
+        }
+        
     }
 }
