@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/thenowrock/RiderProjects/MovieRank/MovieRank/MovieRank.csproj": {}
+    "/home/thenowrock/RiderProjects/MovieRank/MovieRankMVC/MovieRank.csproj": {}
   },
   "projects": {
-    "/home/thenowrock/RiderProjects/MovieRank/MovieRank/MovieRank.csproj": {
+    "/home/thenowrock/RiderProjects/MovieRank/MovieRankMVC/MovieRank.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/thenowrock/RiderProjects/MovieRank/MovieRank/MovieRank.csproj",
+        "projectUniqueName": "/home/thenowrock/RiderProjects/MovieRank/MovieRankMVC/MovieRank.csproj",
         "projectName": "MovieRank",
-        "projectPath": "/home/thenowrock/RiderProjects/MovieRank/MovieRank/MovieRank.csproj",
+        "projectPath": "/home/thenowrock/RiderProjects/MovieRank/MovieRankMVC/MovieRank.csproj",
         "packagesPath": "/home/thenowrock/.nuget/packages/",
-        "outputPath": "/home/thenowrock/RiderProjects/MovieRank/MovieRank/obj/",
+        "outputPath": "/home/thenowrock/RiderProjects/MovieRank/MovieRankMVC/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/thenowrock/.nuget/NuGet/NuGet.Config"
@@ -37,6 +37,26 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[7.0.9, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

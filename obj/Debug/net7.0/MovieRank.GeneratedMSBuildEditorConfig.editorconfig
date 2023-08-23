@@ -9,37 +9,45 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MovieRank
 build_property.RootNamespace = MovieRank
-build_property.ProjectDir = /home/thenowrock/RiderProjects/MovieRank/MovieRank/
+build_property.ProjectDir = /home/thenowrock/RiderProjects/MovieRank/MovieRankMVC/
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /home/thenowrock/RiderProjects/MovieRank/MovieRank
+build_property.MSBuildProjectDirectory = /home/thenowrock/RiderProjects/MovieRank/MovieRankMVC
 build_property._RazorSourceGeneratorDebug = 
 
-[/home/thenowrock/RiderProjects/MovieRank/MovieRank/Views/Home/Index.cshtml]
+[/home/thenowrock/RiderProjects/MovieRank/MovieRankMVC/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/thenowrock/RiderProjects/MovieRank/MovieRank/Views/Home/Privacy.cshtml]
+[/home/thenowrock/RiderProjects/MovieRank/MovieRankMVC/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/thenowrock/RiderProjects/MovieRank/MovieRank/Views/Shared/Error.cshtml]
+[/home/thenowrock/RiderProjects/MovieRank/MovieRankMVC/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/thenowrock/RiderProjects/MovieRank/MovieRank/Views/Shared/_ValidationScriptsPartial.cshtml]
+[/home/thenowrock/RiderProjects/MovieRank/MovieRankMVC/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/thenowrock/RiderProjects/MovieRank/MovieRank/Views/_ViewImports.cshtml]
+[/home/thenowrock/RiderProjects/MovieRank/MovieRankMVC/Views/User/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlci9DcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/thenowrock/RiderProjects/MovieRank/MovieRankMVC/Views/User/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlci9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/thenowrock/RiderProjects/MovieRank/MovieRankMVC/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/thenowrock/RiderProjects/MovieRank/MovieRank/Views/_ViewStart.cshtml]
+[/home/thenowrock/RiderProjects/MovieRank/MovieRankMVC/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/thenowrock/RiderProjects/MovieRank/MovieRank/Views/Shared/_Layout.cshtml]
+[/home/thenowrock/RiderProjects/MovieRank/MovieRankMVC/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-8c19s4l92e
