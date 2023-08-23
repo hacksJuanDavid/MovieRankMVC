@@ -32,15 +32,15 @@ Consideraciones
 
 ## Desarrollo
 
-| Funcionales       | No funcionales            | Comentario                                  |
-|-------------------|---------------------------|---------------------------------------------|
-| - [ ] Login       | - [ ] mensajes validación | con el modal de login                       |
-| - [ ] Register    | - [ ] modal login         |                                             |
+| Funcionales   | No funcionales            | Comentario                                  |
+|---------------|---------------------------|---------------------------------------------|
+| - [ ] Login   | - [ ] mensajes validación | con el modal de login                       |
+| - [ ] Register | - [ ] modal login         |                                             |
 | - [ ] DB usuarios | - [ ] responsive home     |                                             |
 | - [x] DB movies(1) | - [ ] responsive crud     | si encuentran otra melo                     |
 | - [ ] CRUD movies | - [ ] carrousel           |                                             |
 | - [ ] model movies | - [ ] sm md lg revisar    |                                             |
-| - [ ]  | - [ ]     | - [ ] Al editar traer los datos existentes  |
+| - [ ]         | - [ ] HTTPS 5001          | - [ ] Al editar traer los datos existentes  |
 
 
 
