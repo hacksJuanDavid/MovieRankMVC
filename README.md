@@ -26,3 +26,25 @@ Consideraciones
     Utilice HTML5, CSS3 y Javascript en las paginas que lo requieran
     Elimine el codigo sobrante
     Los datos deben almacenarse en memoria, posiblemente en una lista statica que podra ser pasada a la vista directamente o usando el objeto dinamico ViewBag.
+
+
+---
+
+## Desarrollo
+
+| Funcionales        | No funcionales            | Comentario              |
+|--------------------|---------------------------|-------------------------|
+| - [ ] Login        | - [ ] mensajes validación | con el modal de login   |
+| - [ ] Register     | - [ ] modal login         |                         |
+| - [ ] DB usuarios  | - [ ] responsive home     |                         |
+| - [x] DB movies(1) | - [ ] responsive crud     | si encuentran otra melo |
+| - [ ] CRUD movies  | - [ ] carrousel           |                         |
+| - [ ] model movies | - [ ] sm md lg revisar    |                         |
+
+
+Veamos si podemos manejarnos por medio de las siguientes carpetas:
+* `Vistas`
+* `Modelos`
+* `Controladores`
+* `public` (recursos)
+* Si es algo nuevo, crear una carpetica nueva y ya :D
