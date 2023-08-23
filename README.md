@@ -32,14 +32,16 @@ Consideraciones
 
 ## Desarrollo
 
-| Funcionales        | No funcionales            | Comentario              |
-|--------------------|---------------------------|-------------------------|
-| - [ ] Login        | - [ ] mensajes validación | con el modal de login   |
-| - [ ] Register     | - [ ] modal login         |                         |
-| - [ ] DB usuarios  | - [ ] responsive home     |                         |
-| - [x] DB movies(1) | - [ ] responsive crud     | si encuentran otra melo |
-| - [ ] CRUD movies  | - [ ] carrousel           |                         |
-| - [ ] model movies | - [ ] sm md lg revisar    |                         |
+| Funcionales       | No funcionales            | Comentario                                  |
+|-------------------|---------------------------|---------------------------------------------|
+| - [ ] Login       | - [ ] mensajes validación | con el modal de login                       |
+| - [ ] Register    | - [ ] modal login         |                                             |
+| - [ ] DB usuarios | - [ ] responsive home     |                                             |
+| - [x] DB movies(1) | - [ ] responsive crud     | si encuentran otra melo                     |
+| - [ ] CRUD movies | - [ ] carrousel           |                                             |
+| - [ ] model movies | - [ ] sm md lg revisar    |                                             |
+| - [ ]  | - [ ]     | - [ ] Al editar traer los datos existentes  |
+
 
 
 Veamos si podemos manejarnos por medio de las siguientes carpetas:
@@ -48,3 +50,45 @@ Veamos si podemos manejarnos por medio de las siguientes carpetas:
 * `Controladores`
 * `public` (recursos)
 * Si es algo nuevo, crear una carpetica nueva y ya :D
+
+---
+
+### Apuntes de la clase
+
+AppName = MovieRank
+CRUD = Movies
+Rate = 1 - 10 / step 0.1
+30 Movies
+Duration = hh:mm
+Genre = Action|Adventure|Sci-Fi
+
+
+
+Al subir una foto, actualizar la de la ui
+
+
+! config de las imagenes y urls en Appsettings
+! mostrar cuadros de confirmacion
+
+
+# UsersController
+- [ ] Login
+- [ ] Register
+
+# MoviesController
+- [ ] Index
+- [ ] Create
+- [ ] Edit
+- [ ] Details
+- [ ] Delete
+
+List<Movies> : static -> ViewBag?Movies.
+
+! debe ser con https
+
+! port: //localhost:5001/_____
+
+Martes 29 - 6:00 pm
+
+user: admin@email.com
+password: P4ssw0rd*01
