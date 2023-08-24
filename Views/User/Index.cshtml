@@ -13,17 +13,12 @@
 </head>
 <body>
 <header>
-    <nav
+    <div
         class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container-fluid">
-            <a
-                class="navbar-brand"
-                asp-area=""
-                asp-controller="User"
-                id="profileUser"
-                asp-action="Profile">
-                Crud User
-            </a>
+            <div class="navbar-brand">
+                <h1>User Crud</h1>
+            </div>
             <button
                 class="navbar-toggler"
                 type="button"
@@ -40,11 +35,21 @@
                     <li class="nav-item">
                         <a
                             class="nav-link text-dark"
+                            asp-area=""
+                            asp-controller="User"
+                            id="listUser"
+                            asp-action="List">
+                            User List
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            class="nav-link text-dark"
                             id="createUser"
                             asp-area=""
                             asp-controller="User"
                             asp-action="Create">
-                            Create User
+                            User Create
                         </a>
                     </li>
                     <li class="nav-item">
@@ -54,7 +59,7 @@
                             asp-area=""
                             asp-controller="User"
                             asp-action="Edit">
-                            Edit User
+                            User Edit
                         </a>
                     </li>
                     <li class="nav-item">
@@ -64,7 +69,7 @@
                             asp-area=""
                             asp-controller="User"
                             asp-action="Details">
-                            Details User
+                            User Details
                         </a>
                     </li>
                     <li class="nav-item">
@@ -74,13 +79,13 @@
                             asp-area=""
                             asp-controller="User"
                             asp-action="Delete">
-                            Delete User
+                            User Delete
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
-    </nav>
+    </div>
 </header>
 
 <!-- Contenedor para cargar vistas parciales -->
@@ -94,11 +99,11 @@
 <!-- Script customizado para cargar vistas parciales en el contenedor-->
 <script>
     $(document).ready(function () {
-        // Carga la vista parcial "Profile" por defecto
-        loadPartialView("/User/Profile");
+        // Carga la vista parcial "List" por defecto
+        loadPartialView("/User/List");
         
-        // Maneja el clic en el enlace "Profile"
-        $("#profileUser").click(function (e) {
+        // Maneja el clic en el enlace "List"
+        $("#listUser").click(function (e) {
             e.preventDefault();
             loadPartialView($(this).attr("href"));
         });
@@ -129,13 +134,20 @@
 
         // Función para cargar una vista parcial en el contenedor
         function loadPartialView(url) {
-            $.ajax({
-                url: url,
-                type: "GET",
-                success: function (data) {
-                    $("#container").html(data);
-                }
-            });
+         fetch(url)
+             .then(response => {
+                 if (!response.ok) {
+                     throw new Error(`Network response was not ok: ${response.status}`);
+                 }
+                 return response.text();
+             })
+             .then(data => {
+                 document.querySelector("#container").innerHTML = data;
+             })
+             .catch(error => {
+                 console.error("Error fetching data:", error);
+                 // Puedes agregar manejo de errores adicional aquí si es necesario
+             });
         }
     });
 </script>

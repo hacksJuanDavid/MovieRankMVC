@@ -4,8 +4,7 @@ namespace MovieRank.Models;
 
 public class Movie
 {
-    [Key]
-    public int Id { get; set; }
+    [Key] public int Id { get; set; }
 
     [Required(ErrorMessage = "Title is required")]
     [StringLength(50)]
@@ -25,7 +24,7 @@ public class Movie
 
     // [Required(ErrorMessage = "Rating should not be empty.")]
     // Format 0.0
-    public float Rate { get; set; }
+    public double Rate { get; set; }
 
     [Required(ErrorMessage = "A poster is required.")]
     [StringLength(80)]
@@ -34,5 +33,4 @@ public class Movie
 
     // Optional List separated with pipe (|) ej: Action|Adventure|Sci-fi
     public string Genres { get; set; } = null!;
- 
 }

@@ -1,24 +1,48 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MovieRank.Models;
 
 namespace MovieRank.Controllers
 {
     public class UserController : Controller
     {
+        // Create a list of users
+        private static List<User> _users = LoadUsers();
+
+        // LoadUsers method
+        private static List<User> LoadUsers()
+        {
+            // Create a list of users
+            List<User> users = new List<User>();
+
+            // Add users to the list
+            users.Add(new User
+            {
+                Id = 1, UserEmail = "jonhdoe@gmail.com", FirstName = "John", LastName = "Doe", Password = "password"
+            });
+            users.Add(new User
+            {
+                Id = 2, UserEmail = "jonhdoe@gmail.com", FirstName = "John", LastName = "Doe", Password = "password"
+            });
+            users.Add(new User
+            {
+                Id = 3, UserEmail = "jonhdoe@gmail.com", FirstName = "John", LastName = "Doe", Password = "password"
+            });
+            users.Add(new User
+            {
+                Id = 4, UserEmail = "jonhdoe@gmail.com", FirstName = "John", LastName = "Doe", Password = "password"
+            });
+            users.Add(new User
+            {
+                Id = 5, UserEmail = "jonhdoe@gmail.com", FirstName = "John", LastName = "Doe", Password = "password"
+            });
+
+            return users;
+        }
+
         // GET: User
         public ActionResult Index()
         {
             return View();
-        }
-
-        // GET: User/Details/5
-        public ActionResult Details(int id)
-        {
-            return PartialView("Details");
         }
 
         // GET: User/Create
@@ -44,13 +68,13 @@ namespace MovieRank.Controllers
             }
         }
 
-        // GET: User/Edit/5
+        // GET: User/Edit/
         public ActionResult Edit(int id)
         {
             return PartialView("Edit");
         }
 
-        // POST: User/Edit/5
+        // POST: User/Edit/
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -67,13 +91,19 @@ namespace MovieRank.Controllers
             }
         }
 
-        // GET: User/Delete/5
+        // GET: User/Details/id
+        public ActionResult Details(int id)
+        {
+            return PartialView("Details");
+        }
+
+        // GET: User/Delete/
         public ActionResult Delete(int id)
         {
             return PartialView("Delete");
         }
 
-        // POST: User/Delete/5
+        // POST: User/Delete/
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
@@ -89,12 +119,11 @@ namespace MovieRank.Controllers
                 return PartialView("Delete");
             }
         }
-        
-        // GET: User/Profile/5
-        public ActionResult Profile(int id)
+
+        // GET: User/List/
+        public ActionResult List(int id)
         {
-            return PartialView("Profile");
+            return PartialView("List", _users);
         }
-        
     }
 }

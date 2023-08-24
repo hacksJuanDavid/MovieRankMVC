@@ -1,8 +1,6 @@
 
 @
 MovieRank.csproj,c/2/c208ecd4f52b50c4ec5e50ddd80da6f217b96338
-M
-Controllers/HomeController.cs,6/3/63f865e778b7bfd05f4a2abdd25f1b8524a9b876
 @
 appsettings.json,b/c/bc678f3600cdefd583b88522810b2a538d8ffd6a
 :
@@ -10,11 +8,17 @@ M
 Program.cs,1/5/1595e9a250ff95aa8621fbd0083b2a19287dac41
 O
 Context/ApplicationDbContext.cs,a/5/a5e8d35b1a3b143c0f56743c46ff511c5c89a1b3
-H
-Views/User/Create.cshtml,9/e/9ec2d5902a4ebba033383a6775cd617d4f562b75
+9
+	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+S
+#wwwroot/Public/Icon/trash3-fill.svg,6/d/6deab009f04192ba74b5a6453a149a2b2ba0838f
+X
+(wwwroot/Public/Icon/info-square-fill.svg,a/c/ac2e7a1ff601724f086596d66ec72e83c294e9db
+U
+%wwwroot/Public/Icon/pencil-square.svg,f/c/fc59cae9db06b579531177ea82f14cb4c7d7e3d3
+>
+Models/User.cs,6/0/60d35a3b6e5df481bc0b9a825470199a05fff46e
 I
-Views/User/Details.cshtml,d/4/d421fda9ec655771643910ca1131fa2d7b4ee767
-G
-Views/Home/Index.cshtml,f/0/f0c3a7a5b6c77c1b1db0ba1ad357b9192ff5f2eb
+Views/Home/Privacy.cshtml,e/f/ef52122a59f27037ce66b27300026e6c60a8877b
 K
 Views/Shared/_Layout.cshtml,8/0/80158af4320425dabc8a350aed5336c1e7b25165

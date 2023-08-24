@@ -27,24 +27,22 @@ Consideraciones
     Elimine el codigo sobrante
     Los datos deben almacenarse en memoria, posiblemente en una lista statica que podra ser pasada a la vista directamente o usando el objeto dinamico ViewBag.
 
-
 ---
 
 ## Desarrollo
 
-| Funcionales   | No funcionales            | Comentario                                  |
-|---------------|---------------------------|---------------------------------------------|
-| - [ ] Login   | - [ ] mensajes validación | con el modal de login                       |
-| - [ ] Register | - [ ] modal login         |                                             |
-| - [ ] DB usuarios | - [ ] responsive home     |                                             |
-| - [x] DB movies(1) | - [ ] responsive crud     | si encuentran otra melo                     |
-| - [ ] CRUD movies | - [ ] carrousel           |                                             |
-| - [ ] model movies | - [ ] sm md lg revisar    |                                             |
-| - [ ]         | - [ ] HTTPS 5001          | - [ ] Al editar traer los datos existentes  |
-
-
+| Funcionales        | No funcionales            | Comentario                                 |
+|--------------------|---------------------------|--------------------------------------------|
+| - [ ] Login        | - [ ] mensajes validación | con el modal de login                      |
+| - [ ] Register     | - [ ] modal login         |                                            |
+| - [ ] DB usuarios  | - [ ] responsive home     |                                            |
+| - [x] DB movies(1) | - [ ] responsive crud     | si encuentran otra melo                    |
+| - [ ] CRUD movies  | - [ ] carrousel           |                                            |
+| - [ ] model movies | - [ ] sm md lg revisar    |                                            |
+| - [ ]              | - [ ] HTTPS 5001          | - [ ] Al editar traer los datos existentes |
 
 Veamos si podemos manejarnos por medio de las siguientes carpetas:
+
 * `Vistas`
 * `Modelos`
 * `Controladores`
@@ -62,20 +60,18 @@ Rate = 1 - 10 / step 0.1
 Duration = hh:mm
 Genre = Action|Adventure|Sci-Fi
 
-
-
 Al subir una foto, actualizar la de la ui
-
 
 ! config de las imagenes y urls en Appsettings
 ! mostrar cuadros de confirmacion
 
-
 # UsersController
+
 - [ ] Login
 - [ ] Register
 
 # MoviesController
+
 - [ ] Index
 - [ ] Create
 - [ ] Edit

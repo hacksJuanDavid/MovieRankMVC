@@ -5,6 +5,38 @@
       "PackagePath": "staticwebassets/MovieRank.bundle.scp.css"
     },
     {
+      "Id": "/home/thenowrock/RiderProjects/MovieRank/MovieRankMVC/wwwroot/Public/Icon/info-square-fill.svg",
+      "PackagePath": "staticwebassets/Public/Icon/info-square-fill.svg"
+    },
+    {
+      "Id": "/home/thenowrock/RiderProjects/MovieRank/MovieRankMVC/wwwroot/Public/Icon/pencil-square.svg",
+      "PackagePath": "staticwebassets/Public/Icon/pencil-square.svg"
+    },
+    {
+      "Id": "/home/thenowrock/RiderProjects/MovieRank/MovieRankMVC/wwwroot/Public/Icon/trash3-fill.svg",
+      "PackagePath": "staticwebassets/Public/Icon/trash3-fill.svg"
+    },
+    {
+      "Id": "/home/thenowrock/RiderProjects/MovieRank/MovieRankMVC/wwwroot/Public/Img/ImgMovie/avengers-end-game.jpeg",
+      "PackagePath": "staticwebassets/Public/Img/ImgMovie/avengers-end-game.jpeg"
+    },
+    {
+      "Id": "/home/thenowrock/RiderProjects/MovieRank/MovieRankMVC/wwwroot/Public/Img/ImgMovie/avengers.jpeg",
+      "PackagePath": "staticwebassets/Public/Img/ImgMovie/avengers.jpeg"
+    },
+    {
+      "Id": "/home/thenowrock/RiderProjects/MovieRank/MovieRankMVC/wwwroot/Public/Img/ImgMovie/relentless-pursuit-3.jpeg",
+      "PackagePath": "staticwebassets/Public/Img/ImgMovie/relentless-pursuit-3.jpeg"
+    },
+    {
+      "Id": "/home/thenowrock/RiderProjects/MovieRank/MovieRankMVC/wwwroot/Public/Img/ImgMovie/they-are-like-children.jpeg",
+      "PackagePath": "staticwebassets/Public/Img/ImgMovie/they-are-like-children.jpeg"
+    },
+    {
+      "Id": "/home/thenowrock/RiderProjects/MovieRank/MovieRankMVC/wwwroot/Public/Img/ImgMovie/wreck-ralph.jpeg",
+      "PackagePath": "staticwebassets/Public/Img/ImgMovie/wreck-ralph.jpeg"
+    },
+    {
       "Id": "/home/thenowrock/RiderProjects/MovieRank/MovieRankMVC/wwwroot/css/site.css",
       "PackagePath": "staticwebassets/css/site.css"
     },
