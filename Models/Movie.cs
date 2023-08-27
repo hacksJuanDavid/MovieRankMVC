@@ -33,4 +33,6 @@ public class Movie
 
     // Optional List separated with pipe (|) ej: Action|Adventure|Sci-fi
     public string Genres { get; set; } = null!;
+    
+
 }

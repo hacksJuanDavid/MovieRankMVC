@@ -1,21 +1,26 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using MovieRank.Models;
+using MovieRank.Services;
 
 namespace MovieRank.Controllers;
 
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private static MovieService? _movieService;
+    private List<Movie>? _movies = null!;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, MovieService movieService)
     {
+        _movieService = movieService;
         _logger = logger;
     }
 
     public IActionResult Index()
     {
-        return View();
+        _movies = _movieService!.GetMovies();
+        return View(_movies);
     }
 
     public IActionResult Privacy()

@@ -21,21 +21,24 @@ namespace MovieRank.Controllers
             });
             users.Add(new User
             {
-                Id = 2, UserEmail = "jonhdoe@gmail.com", FirstName = "John", LastName = "Doe", Password = "password"
+                Id = 2, UserEmail = "jonhdoe2@gmail.com", FirstName = "John", LastName = "Doe", Password = "password"
             });
             users.Add(new User
             {
-                Id = 3, UserEmail = "jonhdoe@gmail.com", FirstName = "John", LastName = "Doe", Password = "password"
+                Id = 3, UserEmail = "doejohn@gmail.com", FirstName = "John", LastName = "Doe", Password = "password"
             });
             users.Add(new User
             {
-                Id = 4, UserEmail = "jonhdoe@gmail.com", FirstName = "John", LastName = "Doe", Password = "password"
+                Id = 4, UserEmail = "johndoe@gmail.com", FirstName = "John", LastName = "Doe", Password = "password"
             });
             users.Add(new User
             {
-                Id = 5, UserEmail = "jonhdoe@gmail.com", FirstName = "John", LastName = "Doe", Password = "password"
+                Id = 5, UserEmail = "john_doe@yahoo.com", FirstName = "John", LastName = "Doe", Password = "password"
             });
-
+            users.Add(new User
+            {
+                Id = 6, UserEmail = "admin@email.com", FirstName = "admin", LastName = "ctrl", Password = "P4ssw0rd*01"
+            });
             return users;
         }
 
@@ -46,6 +49,7 @@ namespace MovieRank.Controllers
         }
 
         // GET: User/Create
+        
         public ActionResult Create()
         {
             return PartialView("Create");
