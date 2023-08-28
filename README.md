@@ -46,7 +46,7 @@ Veamos si podemos manejarnos por medio de las siguientes carpetas:
 * `Vistas`
 * `Modelos`
 * `Controladores`
-* `public` (recursos)
+* `wwwroot/Public` 
 * Si es algo nuevo, crear una carpetica nueva y ya :D
 
 ---

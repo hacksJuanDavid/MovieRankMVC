@@ -10,6 +10,6 @@ namespace MovieRank.Context
         }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<MovieRank.Models.Movie> Movie { get; set; } = default!;
+        public DbSet<Movie> Movies { get; set; } = default!;
     }
 }
