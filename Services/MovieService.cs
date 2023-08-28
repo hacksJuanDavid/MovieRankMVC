@@ -70,8 +70,62 @@ public class MovieService
                 Duration = "1H:48M",
                 Rate = 3.9,
                 Poster = "/Public/Img/ImgMovie/wreck-ralph.jpeg",
-                Genres = "Animation,Avanture,Children"
+                Genres = "Animation|Adventure|Children"
             });
+            movies.Add(new Movie {
+                Id = 6,
+                Title = "The Specialist",
+                Synopsis = "A woman entices a bomb expert she's involved with into destroying the mafia that killed her family.",
+                Year = 1994,
+                Duration = "1H:50M",
+                Rate = 6.7,
+                Poster = "https://m.media-amazon.com/images/M/MV5BYjMwZDMwZTItMTc2MC00NDRlLWI3YmUtNTg0ZmQ3MzdhNDJmXkEyXkFqcGdeQXVyNjQ2MjQ5NzM@._V1_SY1000_SX677_AL_.jpg",
+                Genres = "Action|Crime|Drama"
+            });
+            movies.Add(new Movie {
+                Id = 7,
+                Title = "Dance Me Outside",
+                Synopsis = "A story of life on an Indian reservation in Ontario: Silas and Frank are trying to get into college to train to be mechanics but they find themselves having to deal with girls, family ... and murder.",
+                Year = 1994,
+                Duration = "1H:24M",
+                Rate = 7.3,
+                Poster = "https://m.media-amazon.com/images/M/MV5BNjQ0NTU4NjI5OV5BMl5BanBnXkFtZTYwMzE0MTg4._V1_SY1000_SX677_AL_.jpg",
+                Genres = "Comedy|Drama"
+            });
+            movies.Add(new Movie {
+                Id = 8,
+                Title = "Mary Shelley's Frankenstein",
+                Synopsis = "When the brilliant but unorthodox scientist Victor Frankenstein rejects the artificial man that he has created, the Creature escapes and later swears revenge.",
+                Year = 1994,
+                Duration = "2H:03M",
+                Rate = 6.4,
+                Poster = "https://m.media-amazon.com/images/M/MV5BOWNjMGQ2NTYtNWZlMS00Nzk4LWE5ZDQtNWFhZDk0ZWM3ODc4XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SY1000_SX677_AL_.jpg",
+                Genres = "Drama|Horror|Romance"
+            });
+            movies.Add(new Movie {
+                Id = 9,
+                Title = "Pulp Fiction",
+                Synopsis = "The lives of two mob hit men, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+                Year = 1994,
+                Duration = "2H:34M",
+                Rate = 8.9,
+                Poster = "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_SX677_AL_.jpg",
+                Genres = "Crime|Drama"
+            });
+            movies.Add(new Movie
+            {
+                Id = 11,
+                Title = "Se7en",
+                Synopsis =
+                    "A film about two homicide detectives' desperate hunt for a serial killer who justifies his crimes as absolution for the world's ignorance of the Seven Deadly Sins.",
+                Year = 1995,
+                Duration = "2H:07M",
+                Rate = 8.6,
+                Poster =
+                    "https://m.media-amazon.com/images/M/MV5BOTUwODM5MTctZjczMi00OTk4LTg3NWUtNmVhMTAzNTNjYjcyXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SY1000_SX677_AL_.jpg",
+                Genres = "Drama|Mystery|Thriller"
+            });
+        
 
             return movies;
     }
