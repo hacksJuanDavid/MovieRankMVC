@@ -10,6 +10,7 @@
         rel="stylesheet"
         href="~/MovieRank.styles.css"
         asp-append-version="true"/>
+    <script src="/_framework/aspnetcore-browser-refresh.js"></script>
 </head>
 <body>
 <!-- Header -->
@@ -73,6 +74,11 @@
                             asp-action="Index">
                             Movie
                         </a>
+                    </li>              
+                    <li>
+                        <button type="button" id="loginButton" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            Login Now
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -82,6 +88,7 @@
 
 <!-- Body -->
 <div class="container">
+    @* @await Html.PartialAsync("_LoginPartial")  <!-- toca ver esto mejor --> *@ 
     <main role="main" class="pb-3">@RenderBody()</main>
 </div>
 
@@ -197,9 +204,36 @@
     </footer>
 </div>
 
+<!-- modal del login -->
+@*<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @await Html.PartialAsync("_LoginPartial")
+            </div>
+        </div>
+    </div>
+</div>*@
+
+
+<script src="/_framework/aspnetcore-browser-refresh.js"></script>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
 @await RenderSectionAsync("Scripts", required: false)
 </body>
+
+<script>
+    $(document).ready(function() {
+        // Show the login modal when the "Login" button is clicked
+        $("#loginButton").click(function() {
+            $("#loginModal").modal("show");
+        });
+    });
+</script>
+
 </html>

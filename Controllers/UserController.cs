@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MovieRank.Models;
+using NuGet.Protocol;
 
 namespace MovieRank.Controllers
 {
@@ -49,7 +51,7 @@ namespace MovieRank.Controllers
         }
 
         // GET: User/Create
-        
+
         public ActionResult Create()
         {
             return PartialView("Create");
@@ -58,13 +60,19 @@ namespace MovieRank.Controllers
         // POST: User/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(User user) // (IFormCollection collection)
         {
             try
             {
                 // TODO: Add insert logic here
+                if (ModelState.IsValid)
+                {
+                    user.Id = _users.Max(u => u.Id) + 1;
+                    _users.Add(user);
+                    return RedirectToAction(nameof(Index));
+                }
 
-                return RedirectToAction(nameof(Index));
+                return View(user);
             }
             catch
             {
@@ -75,19 +83,38 @@ namespace MovieRank.Controllers
         // GET: User/Edit/
         public ActionResult Edit(int id)
         {
-            return PartialView("Edit");
+            User user = _users.FirstOrDefault(u => u.Id == id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return View(user);  //PartialView("Edit");
         }
 
         // POST: User/Edit/
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, User editingUser)//IFormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
+                if (ModelState.IsValid)
+                {
+                    User user = _users.FirstOrDefault(u => u.Id == id);
+                    if (user == null)
+                        return NotFound();
+                    
+                    // vamos a pasarle las propiedades que encuentra
+                    user.UserEmail = editingUser.UserEmail;
+                    user.FirstName = editingUser.FirstName;
+                    user.LastName = editingUser.LastName;
+                    user.Password = editingUser.Password;
 
-                return RedirectToAction(nameof(Index));
+                    return RedirectToAction(nameof(Index));
+                }
+
+                return View(editingUser);
             }
             catch
             {
@@ -98,13 +125,22 @@ namespace MovieRank.Controllers
         // GET: User/Details/id
         public ActionResult Details(int id)
         {
-            return PartialView("Details");
+            User currentUser = _users.FirstOrDefault(u => u.Id == id);
+            // return PartialView("Details");
+            return View(currentUser);
         }
 
         // GET: User/Delete/
         public ActionResult Delete(int id)
         {
-            return PartialView("Delete");
+            User user = _users.FirstOrDefault(u => u.Id == id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return View(user);
+            //return PartialView("Delete");
         }
 
         // POST: User/Delete/
@@ -115,6 +151,7 @@ namespace MovieRank.Controllers
             try
             {
                 // TODO: Add delete logic here
+                _users.Remove(_users.FirstOrDefault(u => u.Id == id));
 
                 return RedirectToAction(nameof(Index));
             }
@@ -129,5 +166,79 @@ namespace MovieRank.Controllers
         {
             return PartialView("List", _users);
         }
+
+
+        //Get: User/Register
+        // public ActionResult Register()
+        // {
+        //     return PartialView("Register");
+        // }
+
+        // POST: User/Register
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        // public ActionResult Register(User user)
+        // {
+        //     if (ModelState.IsValid)
+        //     {
+        //         _users.Add(user);
+        //         return RedirectToAction("RegisterSuccess");
+        //     }
+        //  
+        //     return PartialView("Register", user);
+        // }
+
+        
+        // User/Login
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(LoginViewModel model) //(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                var usuarioValido = _users.FirstOrDefault(u =>
+                    u.UserEmail.Equals(model.UserEmail, StringComparison.OrdinalIgnoreCase) &&
+                    u.Password == model.Password);
+                if (usuarioValido != null)
+                {
+                    Console.Out.WriteLine($"Sesion iniciada: {usuarioValido.ToJson()}");
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    
+                    ModelState.AddModelError("", "Email or password are wrong. Check again");
+                }
+            }
+            return PartialView("Login", model);
+            }
+            // var user = _users.FirstOrDefault(u => u.UserEmail == email && u.Password == password);
+
+            // if (user != null)
+            // {
+            //     return RedirectToAction("Index", "Home");
+            //     // if login successful
+            // }
+            // else
+            // {
+            //     // not successful: por que? algun error en los datos
+            //     ModelState.AddModelError("", "Correo o contraseña incorrecta.");
+            //     return PartialView("_LoginPartial", user);
+            // }
+        //}
+
+        // [HttpPost]
+        // public async Task<IActionResult> Login(User model)
+        // {
+        //     
+        // }
+
+
+
+    //public IActionResult Login()
+    //    {
+    //        return View();
+    //    }
     }
 }

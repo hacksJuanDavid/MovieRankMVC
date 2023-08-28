@@ -24,6 +24,8 @@ public class Movie
 
     // [Required(ErrorMessage = "Rating should not be empty.")]
     // Format 0.0
+    [Range(0,10, ErrorMessage=" Rating must be in range.")]
+    [DisplayFormat(DataFormatString = "{0:#.#}", ApplyFormatInEditMode = true)] // este es step -.1
     public double Rate { get; set; }
 
     [Required(ErrorMessage = "A poster is required.")]
