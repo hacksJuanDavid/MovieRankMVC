@@ -125,8 +125,40 @@ public class MovieService
                     "https://m.media-amazon.com/images/M/MV5BOTUwODM5MTctZjczMi00OTk4LTg3NWUtNmVhMTAzNTNjYjcyXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SY1000_SX677_AL_.jpg",
                 Genres = "Drama|Mystery|Thriller"
             });
-        
-
+            
+            movies.Add(new Movie {
+                Id = 12,
+                Title = "The Lord of the Rings: The Fellowship of the Ring",
+                Synopsis = "An ancient Ring thought lost for centuries has been found, and through a strange twist in fate has been given to a small Hobbit named Frodo.",
+                Year = 2001,
+                Duration = "2H58M",
+                Rate = 8.8,
+                Poster = "https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_SY1000_SX677_AL_.jpg",
+                Genres = "Adventure|Fantasy"
+            });
+            
+            movies.Add(new Movie {
+                Id = 13,
+                Title = "The Lord of the Rings: The Two Towers",
+                Synopsis = "While Frodo and Sam, now accompanied by a new guide, continue their hopeless journey towards the land of shadow to destroy the One Ring.",
+                Year = 2002,
+                Duration = "2H59M",
+                Rate = 8.7,
+                Poster = "https://m.media-amazon.com/images/M/MV5BNGE5MzIyNTAtNWFlMC00NDA2LWJiMjItMjc4Yjg1OWM5NzhhXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_SX677_AL_.jpg",
+                Genres = "Adventure|Fantasy"
+            });
+            
+            movies.Add(new Movie {
+                Id = 14,
+                Title = "The Lord of the Rings: The Return of the King",
+                Synopsis = "While Frodo & Sam continue to approach Mount Doom to destroy the One Ring, Gandalf and Aragorn lead the World of Men against Sauron's army.",
+                Year = 2003,
+                Duration = "3H21M",
+                Rate = 8.9,
+                Poster = "https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWZlMTY3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_SX677_AL_.jpg",
+                Genres = "Adventure|Fantasy"
+            });
+            
             return movies;
     }
 
