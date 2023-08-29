@@ -23,4 +23,6 @@ public class User : IdentityUser
     [Required(ErrorMessage = "Password is absolutely required.")]
     [StringLength(50)]
     public string Password { get; set; } = null!;
+    
+    public bool LoggedIn { get; set; } = false;
 }

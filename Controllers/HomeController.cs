@@ -3,10 +3,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MovieRank.Models;
 using MovieRank.Services;
+using NuGet.Protocol;
 
 
 namespace MovieRank.Controllers;
 
+[Authorize]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
@@ -21,21 +23,23 @@ public class HomeController : Controller
     
     public IActionResult Index()
     {
-        //if (User.Identity != null && !User.Identity.IsAuthenticated)
-        //{
-        //    return PartialView("_LoginPartial");
-        //}
-        // Debug.Assert(User.Identity != null, "User.Identity != null");
-        // if (User.Identity.IsAuthenticated)
-        // {
-        //     Console.Out.Write($"{User.Identity.ToJson()}");
-        // }
-        // else
-        // {
-        //     var loginView = new LoginViewModel();
-        //     return PartialView("_LoginPartial", loginView);
-        // }
-        // login redirection to modal esta como raro.
+        if (User.Identity != null && !User.Identity.IsAuthenticated )
+        {
+            return PartialView("_LoginPartial");
+        }
+         //Debug.Assert(User.Identity != null, "User.Identity != null");
+         if (User.Identity.IsAuthenticated) 
+         {
+             Console.WriteLine("__________________ redirect to -> user home ? maybe?");
+             Console.Out.Write($"{User.Identity.ToJson()}");
+             RedirectToAction("Index", "User");
+         }
+         else
+         {
+             var loginView = new LoginViewModel();
+             return PartialView("_LoginPartial", loginView);
+         }
+         // login redirection to modal esta como raro.
         
         _movies = _movieService!.GetMovies();
         ViewBag.Movies = _movies ?? throw new InvalidOperationException(); 

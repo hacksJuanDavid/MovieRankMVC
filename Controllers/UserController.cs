@@ -193,9 +193,9 @@ namespace MovieRank.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginViewModel model) //(User user)
+        public async Task<ActionResult> Login(LoginViewModel model) //(User user)
         {
-            if (ModelState.IsValid)
+            if (_users.Any(u => u.UserEmail == model.UserEmail) )//(ModelState.IsValid)
             {
                 var usuarioValido = _users.FirstOrDefault(u =>
                     u.UserEmail.Equals(model.UserEmail, StringComparison.OrdinalIgnoreCase) &&
@@ -203,6 +203,7 @@ namespace MovieRank.Controllers
                 if (usuarioValido != null)
                 {
                     Console.Out.WriteLine($"Sesion iniciada: {usuarioValido.ToJson()}");
+                    usuarioValido.LoggedIn = true;
                     return RedirectToAction("Index", "Home");
                 }
                 else
