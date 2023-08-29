@@ -1,7 +1,5 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MovieRank.Models;
-using NuGet.Protocol;
 
 namespace MovieRank.Controllers
 {
@@ -54,7 +52,7 @@ namespace MovieRank.Controllers
 
         public ActionResult Create()
         {
-            return PartialView("Create");
+            return View("Create");
         }
 
         // POST: User/Create
@@ -89,13 +87,13 @@ namespace MovieRank.Controllers
                 return NotFound();
             }
 
-            return View(user);  //PartialView("Edit");
+            return View(user); //PartialView("Edit");
         }
 
         // POST: User/Edit/
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, User editingUser)//IFormCollection collection)
+        public ActionResult Edit(int id, User editingUser) //IFormCollection collection)
         {
             try
             {
@@ -104,7 +102,7 @@ namespace MovieRank.Controllers
                     User user = _users.FirstOrDefault(u => u.Id == id);
                     if (user == null)
                         return NotFound();
-                    
+
                     // vamos a pasarle las propiedades que encuentra
                     user.UserEmail = editingUser.UserEmail;
                     user.FirstName = editingUser.FirstName;
@@ -166,79 +164,5 @@ namespace MovieRank.Controllers
         {
             return PartialView("List", _users);
         }
-
-
-        //Get: User/Register
-        // public ActionResult Register()
-        // {
-        //     return PartialView("Register");
-        // }
-
-        // POST: User/Register
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        // public ActionResult Register(User user)
-        // {
-        //     if (ModelState.IsValid)
-        //     {
-        //         _users.Add(user);
-        //         return RedirectToAction("RegisterSuccess");
-        //     }
-        //  
-        //     return PartialView("Register", user);
-        // }
-
-        
-        // User/Login
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginViewModel model) //(User user)
-        {
-            if (ModelState.IsValid)
-            {
-                var usuarioValido = _users.FirstOrDefault(u =>
-                    u.UserEmail.Equals(model.UserEmail, StringComparison.OrdinalIgnoreCase) &&
-                    u.Password == model.Password);
-                if (usuarioValido != null)
-                {
-                    Console.Out.WriteLine($"Sesion iniciada: {usuarioValido.ToJson()}");
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    
-                    ModelState.AddModelError("", "Email or password are wrong. Check again");
-                }
-            }
-            return PartialView("Login", model);
-            }
-            // var user = _users.FirstOrDefault(u => u.UserEmail == email && u.Password == password);
-
-            // if (user != null)
-            // {
-            //     return RedirectToAction("Index", "Home");
-            //     // if login successful
-            // }
-            // else
-            // {
-            //     // not successful: por que? algun error en los datos
-            //     ModelState.AddModelError("", "Correo o contraseña incorrecta.");
-            //     return PartialView("_LoginPartial", user);
-            // }
-        //}
-
-        // [HttpPost]
-        // public async Task<IActionResult> Login(User model)
-        // {
-        //     
-        // }
-
-
-
-    //public IActionResult Login()
-    //    {
-    //        return View();
-    //    }
     }
 }

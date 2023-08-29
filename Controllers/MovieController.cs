@@ -6,46 +6,37 @@ namespace MovieRank.Controllers
 {
     public class MovieController : Controller
     {
-        // Create a list of movies
-        // private static List<Movie> _movies = LoadMovies();
-
-        // LoadMovies method
-        // private static List<Movie> LoadMovies()
-        // {
-        // }
-        
-        // Movimos la logica set, get a Services <- para acceder a los datos desde home,
-        // sin embargo, no se si se editen.
-        private static MovieService? _movieService;
-        private List<Movie>? _movies;
+        private readonly MovieService _movieService;
 
         public MovieController(MovieService movieService)
         {
             _movieService = movieService;
-        } 
+        }
 
-        // GET: Movie
         public IActionResult Index()
         {
             return View();
         }
 
-        // GET: Movie/Create
+        [HttpGet]
         public IActionResult Create()
         {
-            return PartialView("Create");
+            return View("Create");
         }
 
-        // POST: Movie/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(IFormCollection collection)
+        public IActionResult Create(Movie movie)
         {
             try
             {
-                // TODO: Add insert logic here
+                if (ModelState.IsValid)
+                {
+                    _movieService.AddMovie(movie);
+                    return RedirectToAction(nameof(Index));
+                }
 
-                return RedirectToAction(nameof(Index));
+                return View(movie);
             }
             catch
             {
@@ -53,22 +44,31 @@ namespace MovieRank.Controllers
             }
         }
 
-        // GET: Movie/Edit/
+        [HttpGet]
         public IActionResult Edit(int id)
         {
-            return PartialView("Edit");
+            Movie movie = _movieService.GetMovieById(id);
+            if (movie == null)
+            {
+                return NotFound();
+            }
+
+            return View(movie);
         }
 
-        // POST: Movie/Edit/
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, IFormCollection collection)
+        public IActionResult Edit(int id, Movie editedMovie)
         {
             try
             {
-                // TODO : Add update logic here
+                if (ModelState.IsValid)
+                {
+                    _movieService.UpdateMovie(id, editedMovie);
+                    return RedirectToAction(nameof(Index));
+                }
 
-                return RedirectToAction(nameof(Index));
+                return View(editedMovie);
             }
             catch
             {
@@ -76,27 +76,37 @@ namespace MovieRank.Controllers
             }
         }
 
-        // GET: Movie/Details/
+        [HttpGet]
         public IActionResult Details(int id)
         {
-            return PartialView("Details");
+            Movie movie = _movieService.GetMovieById(id);
+            if (movie == null)
+            {
+                return NotFound();
+            }
+
+            return View(movie);
         }
 
-        // GET: Movie/Delete/
+        [HttpGet]
         public IActionResult Delete(int id)
         {
-            return PartialView("Delete");
+            Movie movie = _movieService.GetMovieById(id);
+            if (movie == null)
+            {
+                return NotFound();
+            }
+
+            return View(movie);
         }
 
-        // POST: Movie/Delete/
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(int id, IFormCollection collection)
+        public IActionResult DeleteConfirmed(int id)
         {
             try
             {
-                // TODO : Add delete logic here
-
+                _movieService.DeleteMovie(id);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -105,11 +115,11 @@ namespace MovieRank.Controllers
             }
         }
 
-        // GET: Movie/List/
+        [HttpGet]
         public IActionResult List()
         {
-            _movies = _movieService!.GetMovies();
-            return PartialView("List", _movies);
+            List<Movie> movies = _movieService.GetMovies();
+            return PartialView("List", movies);
         }
     }
 }

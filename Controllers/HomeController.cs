@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MovieRank.Models;
 using MovieRank.Services;
@@ -9,47 +8,46 @@ namespace MovieRank.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
     private readonly MovieService? _movieService;
     private List<Movie>? _movies = null!;
 
-    public HomeController(ILogger<HomeController> logger, MovieService movieService)
+    public HomeController(MovieService movieService)
     {
         _movieService = movieService;
-        _logger = logger;
     }
-    
-    public IActionResult Index()
+
+    public async Task<IActionResult> Index()
     {
-        //if (User.Identity != null && !User.Identity.IsAuthenticated)
-        //{
-        //    return PartialView("_LoginPartial");
-        //}
-        // Debug.Assert(User.Identity != null, "User.Identity != null");
-        // if (User.Identity.IsAuthenticated)
-        // {
-        //     Console.Out.Write($"{User.Identity.ToJson()}");
-        // }
-        // else
-        // {
-        //     var loginView = new LoginViewModel();
-        //     return PartialView("_LoginPartial", loginView);
-        // }
-        // login redirection to modal esta como raro.
-        
-        _movies = _movieService!.GetMovies();
-        ViewBag.Movies = _movies ?? throw new InvalidOperationException(); 
+        _movies = _movieService.GetMovies(); // Asumiendo que existe un método GetMoviesAsync en MovieService
+
+        if (_movies != null)
+        {
+            ViewBag.Movies = _movies;
+        }
+        else
+        {
+            ViewBag.Movies =
+                new List<Movie>(); // Otra opción es asignar una lista vacía en caso de que no haya películas.
+        }
+
         return View();
     }
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
+
+    public IActionResult MovieDetails(int id)
+    {
+        Movie movie = _movieService.GetMovieById(id);
+        if (movie == null)
+        {
+            return NotFound();
+        }
+
+        return View(movie);
     }
 }

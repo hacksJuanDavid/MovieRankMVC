@@ -24,7 +24,7 @@ public class Movie
 
     // [Required(ErrorMessage = "Rating should not be empty.")]
     // Format 0.0
-    [Range(0,10, ErrorMessage=" Rating must be in range.")]
+    [Range(0, 10, ErrorMessage = " Rating must be in range.")]
     [DisplayFormat(DataFormatString = "{0:#.#}", ApplyFormatInEditMode = true)] // este es step -.1
     public double Rate { get; set; }
 
@@ -35,6 +35,4 @@ public class Movie
 
     // Optional List separated with pipe (|) ej: Action|Adventure|Sci-fi
     public string Genres { get; set; } = null!;
-    
-
 }
