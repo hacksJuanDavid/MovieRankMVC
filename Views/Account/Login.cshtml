@@ -1,7 +1,7 @@
 @model MovieRank.Models.User
 
-<h2>Iniciar Sesión</h2>
-<form asp-controller="Account" asp-action="Login" method="post">
+<h2> Login with your account </h2>
+<form asp-controller="User" asp-action="Login" method="post">
     <div class="form-group">
         <label for="UserEmail">Correo Electrónico</label>
         <input type="email" class="form-control" id="UserEmail" name="UserEmail" required>
@@ -10,5 +10,7 @@
         <label for="Password">Contraseña</label>
         <input type="password" class="form-control" id="Password" name="Password" required>
     </div>
-    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+    <div class="d-flex justify-content-center align-content-center pb-2 mb-5">
+        <button type="submit" class="btn btn-primary pt-2" style="width: 50%">Iniciar Sesión</button>
+    </div>
 </form>
