@@ -27,7 +27,6 @@
 
 
     <ItemGroup>
-        <Folder Include="Data\"/>
         <Folder Include="Views\Movie\"/>
         <Folder Include="wwwroot\Public\Img\ImgUser\"/>
     </ItemGroup>
