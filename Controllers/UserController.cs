@@ -1,55 +1,26 @@
 using Microsoft.AspNetCore.Mvc;
 using MovieRank.Models;
+using MovieRank.Services;
 
 namespace MovieRank.Controllers
 {
     public class UserController : Controller
     {
-        // Create a list of users
-        private static List<User> _users = LoadUsers();
+        private readonly UserService _userService;
 
-        // LoadUsers method
-        private static List<User> LoadUsers()
+        public UserController(UserService userService)
         {
-            // Create a list of users
-            List<User> users = new List<User>();
-
-            // Add users to the list
-            users.Add(new User
-            {
-                Id = 1, UserEmail = "jonhdoe@gmail.com", FirstName = "John", LastName = "Doe", Password = "password"
-            });
-            users.Add(new User
-            {
-                Id = 2, UserEmail = "jonhdoe2@gmail.com", FirstName = "John", LastName = "Doe", Password = "password"
-            });
-            users.Add(new User
-            {
-                Id = 3, UserEmail = "doejohn@gmail.com", FirstName = "John", LastName = "Doe", Password = "password"
-            });
-            users.Add(new User
-            {
-                Id = 4, UserEmail = "johndoe@gmail.com", FirstName = "John", LastName = "Doe", Password = "password"
-            });
-            users.Add(new User
-            {
-                Id = 5, UserEmail = "john_doe@yahoo.com", FirstName = "John", LastName = "Doe", Password = "password"
-            });
-            users.Add(new User
-            {
-                Id = 6, UserEmail = "admin@email.com", FirstName = "admin", LastName = "ctrl", Password = "P4ssw0rd*01"
-            });
-            return users;
+            _userService = userService;
         }
 
         // GET: User
         public ActionResult Index()
         {
-            return View();
+            var users = _userService.GetAllUsers();
+            return View(users);
         }
 
         // GET: User/Create
-
         public ActionResult Create()
         {
             return View("Create");
@@ -58,15 +29,13 @@ namespace MovieRank.Controllers
         // POST: User/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(User user) // (IFormCollection collection)
+        public ActionResult Create(User user)
         {
             try
             {
-                // TODO: Add insert logic here
                 if (ModelState.IsValid)
                 {
-                    user.Id = _users.Max(u => u.Id) + 1;
-                    _users.Add(user);
+                    _userService.AddUser(user);
                     return RedirectToAction(nameof(Index));
                 }
 
@@ -81,34 +50,25 @@ namespace MovieRank.Controllers
         // GET: User/Edit/
         public ActionResult Edit(int id)
         {
-            User user = _users.FirstOrDefault(u => u.Id == id);
+            User user = _userService.GetUserById(id);
             if (user == null)
             {
                 return NotFound();
             }
 
-            return View(user); //PartialView("Edit");
+            return View(user);
         }
 
         // POST: User/Edit/
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, User editingUser) //IFormCollection collection)
+        public ActionResult Edit(int id, User editingUser)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    User user = _users.FirstOrDefault(u => u.Id == id);
-                    if (user == null)
-                        return NotFound();
-
-                    // vamos a pasarle las propiedades que encuentra
-                    user.UserEmail = editingUser.UserEmail;
-                    user.FirstName = editingUser.FirstName;
-                    user.LastName = editingUser.LastName;
-                    user.Password = editingUser.Password;
-
+                    _userService.UpdateUser(id, editingUser);
                     return RedirectToAction(nameof(Index));
                 }
 
@@ -123,22 +83,25 @@ namespace MovieRank.Controllers
         // GET: User/Details/id
         public ActionResult Details(int id)
         {
-            User currentUser = _users.FirstOrDefault(u => u.Id == id);
-            // return PartialView("Details");
-            return View(currentUser);
-        }
-
-        // GET: User/Delete/
-        public ActionResult Delete(int id)
-        {
-            User user = _users.FirstOrDefault(u => u.Id == id);
+            User user = _userService.GetUserById(id);
             if (user == null)
             {
                 return NotFound();
             }
 
             return View(user);
-            //return PartialView("Delete");
+        }
+
+        // GET: User/Delete/
+        public ActionResult Delete(int id)
+        {
+            User user = _userService.GetUserById(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return View(user);
         }
 
         // POST: User/Delete/
@@ -148,9 +111,7 @@ namespace MovieRank.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
-                _users.Remove(_users.FirstOrDefault(u => u.Id == id));
-
+                _userService.DeleteUser(id);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -160,9 +121,10 @@ namespace MovieRank.Controllers
         }
 
         // GET: User/List/
-        public ActionResult List(int id)
+        public ActionResult List()
         {
-            return PartialView("List", _users);
+            var users = _userService.GetAllUsers();
+            return PartialView("List", users);
         }
     }
 }
