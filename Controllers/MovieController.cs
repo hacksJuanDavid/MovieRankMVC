@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MovieRank.Models;
 using MovieRank.Services;
 
 namespace MovieRank.Controllers
 {
+    [Authorize]
     public class MovieController : Controller
     {
         private readonly MovieService _movieService;

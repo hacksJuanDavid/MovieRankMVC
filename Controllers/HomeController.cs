@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MovieRank.Models;
 using MovieRank.Services;
@@ -6,6 +7,7 @@ using MovieRank.Services;
 
 namespace MovieRank.Controllers;
 
+[Authorize]
 public class HomeController : Controller
 {
     private readonly MovieService? _movieService;

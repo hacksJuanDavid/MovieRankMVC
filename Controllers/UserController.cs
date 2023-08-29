@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MovieRank.Models;
 using MovieRank.Services;
 
 namespace MovieRank.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         private readonly UserService _userService;
@@ -125,6 +127,11 @@ namespace MovieRank.Controllers
         {
             var users = _userService.GetAllUsers();
             return PartialView("List", users);
+        }
+
+        public IActionResult Login()
+        {
+            return View();
         }
     }
 }
