@@ -1,42 +1,48 @@
-@model MovieRank.Models.Movie
-
-@{
-    ViewData["Title"] = "Create";
-}
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<<<<<<< Updated upstream
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-=======
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
->>>>>>> Stashed changes
-    <title>@ViewData["Title"] - MovieCreate</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/MovieRank.styles.css" asp-append-version="true" />
+    <title>Agregar Película</title>
     <style>
-        /* Estilos CSS para el contenedor principal */
-        .container {
-            display: flex;
-            flex-direction: column;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            text-align: center;
+        /* Estilos CSS generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
         }
 
-        /* Estilos CSS para el contenedor de imagen */
+        /* Estilos para el encabezado */
+        h1 {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin: 0;
+        }
+
+        /* Estilos para el contenedor principal */
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex; /* Cambio a flexbox */
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        /* Estilos para el contenedor de imagen */
         .image-container {
-            width: 400px;
-            height: 400px;
+            width: 200px;
+            height: 200px;
             border: 2px solid #000;
+            border-radius: 15px;
             position: relative;
             overflow: hidden;
-            margin: 0 auto;
         }
 
         .image-preview {
@@ -45,27 +51,98 @@
             display: block;
         }
 
-        /* Estilos para el div al lado del container de imagen */
+        /* Estilos para el contenedor de texto */
         .text-div {
+            flex-grow: 1; /* Para que crezca y ocupe el espacio disponible */
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            margin-top: 20px;
+            margin-left: 20px;
         }
 
-        /* Estilos específicos para los campos "Título" y "Sinopsis" */
-        #Title,
-        #Synopsis,
-        #Year,
-        #Duration,
-        #Rate,
-        #Poster,
-        #Genres {
+        /* Estilos para los campos de entrada de texto */
+        input[type="text"],
+        textarea,
+        input[type="number"],
+        input[type="range"],
+        input[type="file"] {
             width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
             font-size: 14px;
+        }
+
+        /* Estilos para las etiquetas */
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* Estilos para el botón "Seleccionar archivo" */
+        .file-upload-btn {
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+            .file-upload-btn:hover {
+                background-color: #555;
+            }
+
+        /* Estilos para el nombre del archivo */
+        .file-name {
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        /* Estilos para la barra de progreso */
+        #rating {
+            width: 100%;
+            height: 20px;
+        }
+
+        /* Estilos para el campo de géneros y los botones */
+        .genre-container {
+            display: flex;
+            align-items: center;
             margin-top: 10px;
         }
+
+        input[type="text"].genre {
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+
+        .genre-buttons {
+            display: flex;
+            flex-direction: column;
+        }
+
+            .genre-buttons button {
+                margin-top: 5px;
+                font-size: 16px;
+                width: 40px;
+                background-color: #333;
+                color: #fff;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
+            }
+
+                .genre-buttons button:hover {
+                    background-color: #555;
+                }
 
         /* Estilos para centrar los botones */
         .button-container {
@@ -73,113 +150,61 @@
             justify-content: center;
             margin-top: 20px;
         }
+
+        /* Estilos para el nuevo contenedor de selección de imagen */
+        .image-upload-container {
+            flex-basis: 100%;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <div class="title-container">
-            <h1>Create</h1>
-        </div>
-        <div class="form-container">
-<<<<<<< Updated upstream
-            <form asp-action="Create">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Title" class="control-label">Title</label>
-                    <input asp-for="Title" class="form-control" />
-                    <span asp-validation-for="Title" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Synopsis" class="control-label">Synopsis</label>
-                    <input asp-for="Synopsis" class="form-control" />
-                    <span asp-validation-for="Synopsis" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Year" class="control-label">Year</label>
-                    <input asp-for="Year" class="form-control" />
-                    <span asp-validation-for="Year" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Duration" class="control-label">Duration</label>
-                    <input asp-for="Duration" class="form-control" />
-                    <span asp-validation-for="Duration" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Rate" class="control-label">Rate</label>
-                    <input asp-for="Rate" class="form-control" />
-                    <span asp-validation-for="Rate" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Poster" class="control-label">Poster</label>
-                    <input asp-for="Poster" class="form-control" />
-                    <span asp-validation-for="Poster" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Genres" class="control-label">Genres</label>
-                    <input asp-for="Genres" class="form-control" />
-                    <span asp-validation-for="Genres" class="text-danger"></span>
-                </div>
-                <div class="form-group text-center button-container">
-                    <input type="submit" value="Create" class="btn btn-primary" />
-                    <a asp-action="Index" class="btn btn-secondary ml-2">Back to List</a>
-=======
-            <form method="POST" action="/add_movie" enctype="multipart/form-data">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Title" class="control-label">Título:</label>
-                    <input asp-for="Title" id="Title" name="Title" class="form-control" required />
-                </div>
-                <div class="form-group">
-                    <label asp-for="Synopsis" class="control-label">Sinopsis:</label>
-                    <textarea asp-for="Synopsis" id="Synopsis" name="Synopsis" class="form-control" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Year" class="control-label">Año:</label>
-                    <input asp-for="Year" id="Year" name="Year" class="form-control" type="number" min="1990" max="2099" />
-                </div>
-                <div class="form-group">
-                    <label asp-for="Duration" class="control-label">Duración (hh:mm):</label>
-                    <input asp-for="Duration" id="Duration" name="Duration" class="form-control" placeholder="hh:mm" />
-                </div>
-                <div class="form-group">
-                    <label asp-for="Rate" class="control-label">Calificación (1-10):</label>
-                    <input asp-for="Rate" id="Rate" name="Rate" class="form-control" type="range" min="1" max="10" step="0.1" />
-                </div>
-                <div class="form-group">
-                    <label asp-for="Poster" class="control-label">Imagen del Póster:</label>
-                    <div class="image-container">
-                        <img id="image-preview" src="#" alt="Vista previa de la imagen" style="display: none;">
-                    </div>
-                    <input asp-for="Poster" id="Poster" name="Poster" class="form-control" accept="image/*" type="file" required />
-                </div>
-                <div class="form-group">
-                    <label asp-for="Genres" class="control-label">Géneros:</label>
-                    <div class="genre-container">
-                        <input asp-for="Genres" id="Genres" name="Genres" class="form-control genre" required />
-                        <div class="genre-buttons">
-                            <button type="button" id="addGenre">+</button>
-                            <button type="button" id="removeGenre">-</button>
-                        </div>
+    <h1>Create Movie</h1>
+    <form method="POST" action="/add_movie" enctype="multipart/form-data">
+        <div class="container">
+            <div class="image-container">
+                <img id="image-preview" src="#" alt="Vista previa de la imagen" style="display: none;">
+            </div>
+            <div class="text-div">
+                <label for="poster">Imagen del Póster:</label>
+                <label for="title">Título:</label>
+                <input type="text" id="title" name="title" required>
+                <label for="synopsis">Sinopsis:</label>
+                <textarea id="synopsis" name="synopsis" required></textarea>
+                <label for="year">Año:</label>
+                <input type="number" id="year" name="year" min="1990" max="2023">
+                <label for="duration">Duración (hh:mm):</label>
+                <input type="text" id="duration" name="duration" placeholder="hh:mm">
+                <label for="rating">Calificación (1-10):</label>
+                <input type="range" id="rating" name="rating" min="1" max="10" step="0.1">
+                <div class="genre-container">
+                    <label>Géneros:</label>
+                    <div id="genres">
+                        <!-- Sin etiqueta inicial -->
+                        <button type="button" id="addGenre">+</button>
+                        <button type="button" id="removeGenre">-</button>
                     </div>
                 </div>
-                <div class="form-group text-center button-container">
-                    <input type="submit" name="action" value="Aceptar" class="btn btn-primary" />
-                    <button type="button" name="action" value="Cancelar" onclick="window.history.back();" class="btn btn-secondary ml-2">Cancelar</button>
->>>>>>> Stashed changes
-                </div>
-            </form>
-        </div>
-    </div>
+            </div>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<<<<<<< Updated upstream
-    <script src="~/js/site.js" asp-append-version="true"></script>
-=======
-    <script src="~/js/site.js"></script>
+            <!-- Nuevo contenedor para el botón "Seleccionar Imagen" -->
+            <div class="image-upload-container">
+                <label for="poster">Seleccionar Imagen:</label>
+                <input type="file" id="poster" name="poster" accept="image/*" required class="file-upload-btn">
+                <span class="file-name"></span>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button type="submit" name="action" value="accept">Aceptar</button>
+            <button type="button" name="action" value="cancel" onclick="window.history.back();">Cancelar</button>
+        </div>
+    </form>
     <script>
-        const posterInput = document.getElementById('Poster');
+        const posterInput = document.getElementById('poster');
         const imagePreview = document.getElementById('image-preview');
+        const fileUploadBtn = document.querySelector('.file-upload-btn');
+        const fileName = document.querySelector('.file-name');
         const imageContainer = document.querySelector('.image-container');
 
         posterInput.addEventListener('change', function () {
@@ -193,20 +218,24 @@
                     imagePreview.style.height = '100%';
                 };
                 reader.readAsDataURL(file);
+                // Muestra el nombre del archivo seleccionado
+                fileName.textContent = file.name;
             } else {
                 imagePreview.style.display = 'none';
+                fileName.textContent = '';
             }
         });
 
+        // Código JavaScript para agregar y quitar campos de género
         const addGenreButton = document.getElementById('addGenre');
         const removeGenreButton = document.getElementById('removeGenre');
-        const genresContainer = document.querySelector('.genre-container');
+        const genresContainer = document.getElementById('genres');
 
         addGenreButton.addEventListener('click', function () {
             const genreInput = document.createElement('input');
             genreInput.type = 'text';
-            genreInput.className = 'form-control genre';
-            genreInput.name = 'Genres';
+            genreInput.className = 'genre';
+            genreInput.name = 'genre';
             genresContainer.appendChild(genreInput);
         });
 
@@ -217,6 +246,5 @@
             }
         });
     </script>
->>>>>>> Stashed changes
 </body>
 </html>
