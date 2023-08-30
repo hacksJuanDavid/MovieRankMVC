@@ -5,7 +5,6 @@ using MovieRank.Services;
 
 namespace MovieRank.Controllers
 {
-    [Authorize]
     public class MovieController : Controller
     {
         private readonly MovieService _movieService;

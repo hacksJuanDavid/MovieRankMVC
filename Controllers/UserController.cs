@@ -5,7 +5,6 @@ using MovieRank.Services;
 
 namespace MovieRank.Controllers
 {
-    [Authorize]
     public class UserController : Controller
     {
         private readonly UserService _userService;
@@ -128,6 +127,7 @@ namespace MovieRank.Controllers
             var users = _userService.GetAllUsers();
             return PartialView("List", users);
         }
+<<<<<<< HEAD
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -153,5 +153,7 @@ namespace MovieRank.Controllers
             return View();
         }
         */
+=======
+>>>>>>> origin/main
     }
 }

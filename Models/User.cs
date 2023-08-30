@@ -5,7 +5,7 @@ namespace MovieRank.Models;
 
 public class User : IdentityUser
 {
-    [Key] public int Id { get; set; }
+    [Key] public new int Id { get; set; }
 
     [Required(ErrorMessage = "UserEmail is required.")]
     [EmailAddress(ErrorMessage = "UserEmail has to be a valid address.")]
