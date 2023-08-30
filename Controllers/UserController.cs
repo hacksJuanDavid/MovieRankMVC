@@ -127,33 +127,6 @@ namespace MovieRank.Controllers
             var users = _userService.GetAllUsers();
             return PartialView("List", users);
         }
-<<<<<<< HEAD
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginViewModel model)
-        {
-            if (_userService.UserExistsEmail(model.UserEmail))
-            {
-                //(ModelState.IsValid)
-                User user = _userService.GetUserByEmail(model.UserEmail);
-                Console.WriteLine($"Sesion INICIADA OK ______> {model.UserEmail}");
-                System.Console.Out.WriteLine($"Sesion INICIADA OK ______> {model.UserEmail}");
-                return RedirectToAction("Index", "User");
-                
-            }else {
-                ModelState.AddModelError("", "Revisa tus datos"); 
-            }
-            
-            return View(model);
-        }
-        /*
-        public IActionResult Login()
-        {
-            return View();
-        }
-        */
-=======
->>>>>>> origin/main
     }
 }

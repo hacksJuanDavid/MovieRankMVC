@@ -51,10 +51,10 @@ namespace MovieRank.Services
 
         public bool UserExistsEmail(string email) => _users.Any(u => u.UserEmail == email);
 
-        public User GetUserByEmail(string email)
-        {
-            return _users.FirstOrDefault(u => u.UserEmail == email)!;
-        }
+        // public User GetUserByEmail(string email)
+        // {
+        //     return _users.FirstOrDefault(u => u.UserEmail == email)!;
+        // }
 
         public void AddUser(User user)
         {
