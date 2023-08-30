@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using MovieRank.Models;
 using MovieRank.Services;
 
+
 public class AccountController : Controller
 {
     private readonly UserService _userService;
@@ -22,35 +23,37 @@ public class AccountController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Login(string userEmail, string password, string returnUrl = null)
+    public async Task<IActionResult> Login(string userEmail, string password, string returnUrl = null)
     {
         if (ModelState.IsValid)
         {
             var user = _userService.GetUserByEmail(userEmail);
-
+            
             if (user != null && user.Password == password)
             {
                 var claims = new List<Claim>();
 
-                if (!string.IsNullOrEmpty(user.UserName))
+                if (!string.IsNullOrWhiteSpace(user.UserName))
                 {
                     claims.Add(new Claim(ClaimTypes.Name, user.UserName));
                 }
-
-                // Agrega más claims aquí si es necesario
+                
+                // Generar un identificador único para el usuario
+                var userId = Guid.NewGuid().ToString();
+                claims.Add(new Claim("UserId", userId)); // Agregar el Claim personalizado
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var authProperties = new AuthenticationProperties
                 {
-                    // Configura las propiedades de autenticación según tus necesidades
+                    // Configure authentication properties as needed
                 };
 
-                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties).Wait();
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
 
                 return RedirectToAction("Index", "Home");
             }
 
-            ModelState.AddModelError(string.Empty, "Intento de inicio de sesión no válido");
+            ModelState.AddModelError(string.Empty, "Invalid login attempt");
         }
 
         return View();
