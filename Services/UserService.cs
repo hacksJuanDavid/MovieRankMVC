@@ -85,5 +85,10 @@ namespace MovieRank.Services
                 _users.Remove(user);
             }
         }
+        public User GetUserByEmail(string modelUserEmail)
+        {
+            return _users.FirstOrDefault(user => user.UserEmail.Equals(modelUserEmail, StringComparison.OrdinalIgnoreCase));
+        }
+
     }
 }
